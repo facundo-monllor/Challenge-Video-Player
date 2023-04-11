@@ -1,16 +1,20 @@
-import React,{ useState, useRef, useEffect } from 'react'
+import React,{ useState, useRef } from 'react'
 
 import './App.css'
 import { PlayButton } from './components/PlayButton'
 import { DurationButton } from './components/DurationButton'
 import { RangeButton } from './components/RangeButton'
 import { MuteButton } from './components/MuteButton'
+import { VolumeButton } from './components/volumeButton'
+import { SpaceButton } from './components/SpaceButton'
 
 function App() {
 
   const [videoDuration, setVideoDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [progress, setProgress] = useState(0)
+  const [videoSpace, setVideoSpace] = useState(true)
+
   const videoRef = useRef(null)
 
   const loadDuration = () => {
@@ -26,21 +30,24 @@ function App() {
     setProgress((currentTime/videoDuration) * 100)
   }
 
-  
   return (
     <div className="App">
 
       <div className='video-div'>
         <h1>Video player</h1>
         <video
+          width={videoSpace ? "400px" : "800px"}
+          height={videoSpace ? "300px" : "600px"}
           ref={videoRef}
-          src="https://media.istockphoto.com/id/173046102/es/v%C3%ADdeo/cachorro-perro-corriendo-con-alegr%C3%ADa.mp4?s=mp4-640x640-is&k=20&c=oKIynUbuF3Pqvg3UjJDdYag80z37ESonXI26mfkvEBg="
+          src="https://res.cloudinary.com/dkbp6rk0s/video/upload/v1681180060/sunset_timelapse_indkpb.mp4"
           onLoadedMetadata={loadDuration}
           onTimeUpdate={handleCurrentTime}
         ></video>
+        
       </div>
 
       <div className='buttons-video'>
+
 
         <PlayButton 
           videoRef={videoRef}
@@ -70,8 +77,16 @@ function App() {
         <MuteButton 
           videoRef={videoRef}
         />
-        
-      
+
+        <VolumeButton
+          videoRef={videoRef}
+        />
+
+        <SpaceButton
+         videoSpace={videoSpace}
+         setVideoSpace={setVideoSpace}
+        />
+
       </div>
 
 

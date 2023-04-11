@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { GoMute, GoUnmute } from "react-icons/go";
 
-
-
 export const MuteButton = ({videoRef}) => {
 
   const [isMuted, setIsMuted] = useState(false)

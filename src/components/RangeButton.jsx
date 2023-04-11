@@ -4,9 +4,9 @@ export const RangeButton = ({videoDuration, videoRef, progress ,setProgress}) =>
 
 const handleProgressChange = (event) => {
     const progress = event.target.value;
+    setProgress(progress);
     const currentTime = (progress / 100) * videoDuration;
     videoRef.current.currentTime = currentTime;
-    setProgress(progress);
     };
 
   return (
