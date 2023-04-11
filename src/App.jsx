@@ -4,6 +4,7 @@ import './App.css'
 import { PlayButton } from './components/PlayButton'
 import { DurationButton } from './components/DurationButton'
 import { RangeButton } from './components/RangeButton'
+import { MuteButton } from './components/MuteButton'
 
 function App() {
 
@@ -64,6 +65,10 @@ function App() {
           videoRef={videoRef}
           progress={progress}
           setProgress={setProgress}
+        />
+
+        <MuteButton 
+          videoRef={videoRef}
         />
         
       
